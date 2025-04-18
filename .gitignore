@@ -1,0 +1,59 @@
+# Конфиденциальные данные
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Виртуальное окружение
+.venv/
+venv/
+ENV/
+env/
+
+# Poetry
+.poetry/
+poetry.lock
+
+# Allure
+allure-results/
+allure-report/
+
+# Журналы и кеши
+*.log
+.cache/
+.pytest_cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Мобильные приложения (особенно большие файлы APK/IPA)
+*.apk
+*.ipa
+*.app
+
+# Системные файлы
+.DS_Store
+Thumbs.db 

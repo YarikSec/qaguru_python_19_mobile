@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "mobile-test-framework"
+version = "0.1.0"
+description = "Framework for mobile testing with Appium and BrowserStack"
+authors = ["Yaroslav <yaroslav@example.com>"]
+readme = "readme.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+appium-python-client = "^2.12.0"
+pytest = "^7.4.0"
+allure-pytest = "^2.13.2"
+selene = "^2.0.0"
+python-dotenv = "^1.0.0"
+pydantic = "^2.5.0"
+pydantic-settings = "^2.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api" 
