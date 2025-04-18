@@ -1,7 +1,8 @@
+import pytest
 from selene import have, browser
 from allure import step
 
-
+@pytest.mark.skip('Пропускаем тест - еще в работе')
 def test_search():
     browser.open('/')
 

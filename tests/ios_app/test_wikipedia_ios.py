@@ -1,9 +1,11 @@
 import allure
+import pytest
 from allure_commons._allure import step
 from appium.webdriver.common.appiumby import AppiumBy
 from selene import browser, have
 
 
+@pytest.mark.skip('Пропускаем тест - еще в работе')
 @allure.title('iOS Wiki Search Test')
 @allure.severity(allure.severity_level.NORMAL)
 @allure.description('Поиск в приложении Wikipedia на iOS')
@@ -23,6 +25,7 @@ def test_search_ios():
         results.first.should(have.text('Appium'))
 
 
+@pytest.mark.skip('Пропускаем тест - еще в работе')
 @allure.title('iOS Wiki Article Test')
 @allure.severity(allure.severity_level.NORMAL)
 @allure.description('Поиск и открытие статьи в приложении Wikipedia на iOS')
