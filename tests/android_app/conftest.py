@@ -20,7 +20,7 @@ def mobile_management():
         'deviceName': settings.android_device_name,
 
         # Set URL of the application under test
-        'app': 'bs://sample.app',
+        'app':  settings.app, # 'bs://sample.app',
 
         # Set other BrowserStack capabilities
         'bstack:options': {

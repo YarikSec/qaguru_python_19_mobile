@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     # BrowserStack credentials
     bstack_username: str = Field(..., env='BSTACK_USERNAME')
     bstack_access_key: str = Field(..., env='BSTACK_ACCESS_KEY')
+    app: str = Field(..., env='APP')
     
     # Android specific settings
     android_device_name: str = Field('Google Pixel 3', env='ANDROID_DEVICE_NAME')

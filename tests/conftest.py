@@ -18,7 +18,7 @@ from appium import webdriver
 
 
 def pytest_addoption(parser):
-    parser.addoption('--platform', default='android', help='Specify platform: android or ios')
+    parser.addoption('--platform', default='android', help='Specify platform: android, ios, or local/web')
 
 
 @pytest.fixture(scope='session')
@@ -36,7 +36,7 @@ def mobile_management(platform):
             'platformVersion': settings.android_platform_version,
             'deviceName': settings.android_device_name,
 
-            'app': 'bs://sample.app',
+            'app': settings.app,# 'bs://sample.app',
 
             'bstack:options': {
                 'projectName': 'Python Mobile Project',
@@ -90,4 +90,32 @@ def mobile_management(platform):
     with allure.step('Tear down app session'):
         browser.quit()
 
-    utils.allure.attach_bstack_video(session_id) 
+    with allure.step('Attach video session'):
+        utils.allure.attach_bstack_video(session_id)
+
+"""
+Тут можно добавить логику для запуска видео сессии на BStack, если тест провалился/завершился
+"""
+    # if config.settings.run_on_bstack:
+    #   with allure.step('Attach video session'):
+    #       utils.allure.attach_bstack_video(session_id)
+
+    # if config.settings.run_on_bstack and request.node.result_of_call.failed:
+    #       """
+    #       request.node is an "item" because we use the default function scope
+    #       """
+    #       with allure.step('Take screenshot'):
+    #         utils.allure.attach_screenshot(browser)
+
+    #      with allure.step('Save xml report'):
+    #      utils.allure.attach_xml(browser)
+
+# @pytest.hookimpl(tryfirst=True, hookwrapper=True)
+# def pytest_runtest_makereport(item: Item, call: CallInfo):  # noqa
+#     # execute all other hooks to obtain the report object
+#     outcome = yield
+#     result_of_ = outcome.get_result()
+#
+#     # set a report attribute for each phase of a call, which can
+#     # be "setup", "call", "teardown"
+#     setattr(item, 'result_of', result_of_.when, result_of_)
