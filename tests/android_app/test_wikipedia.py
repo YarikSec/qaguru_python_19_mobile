@@ -69,3 +69,40 @@ def test_getting_started():
         browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/fragment_onboarding_done_button')).click()
         browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/view_card_header_title')
                         ).should(have.text('Wikipedia games'))
+
+@allure.title('Android Wiki Reading List Test')
+@allure.severity(allure.severity_level.NORMAL)
+@allure.description('Тестирование создания и удаления списка чтения в приложении Wikipedia на Android')
+@allure.label('owner', 'Yaroslav')
+@allure.epic('Википедия мобильное приложение Android')
+@allure.feature('Тестирование создания и удаления списка чтения')
+@allure.story('Тестирование создания и удаления списка чтения')
+def test_reading_list():
+    if browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/view_card_header_title')
+                        ).should(have.text('Wikipedia games')):
+        with ((step('Click on the reading list'))):
+            browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/view_card_header_title')
+                            ).click()
+            browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/reading_list_item_title')
+                            ).should(have.text('Reading list'))
+            browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/view_card_header_title')
+                            ).should(have.text('Reading list'))
+            browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/menu_overflow_button')).click()
+
+            with ((step('Click on the delete'))):
+                if browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/menu_delete')).should(have.text('Delete')):
+                    browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/menu_delete')).click()
+                    browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/reading_list_item_title')
+                                    ).should(have.text('Reading list'))
+                    browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/view_card_header_title')
+                                    ).should(have.text('Reading list'))
+
+@allure.title('Android Wiki Favorites Test')
+@allure.severity(allure.severity_level.NORMAL)
+@allure.description('Тестирование добавления и удаления из избранного в приложении Wikipedia на Android')
+@allure.label('owner', 'Yaroslav')
+@allure.epic('Википедия мобильное приложение Android')
+@allure.feature('Тестирование добавления и удаления из избранного')
+@allure.story('Тестирование добавления и удаления из избранного')
+def test_favorites():
+    pass
